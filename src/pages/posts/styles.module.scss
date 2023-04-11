@@ -54,11 +54,13 @@
 }
 
 .buttonNavigate{
+  height: 40px;
   margin-top: 2rem;
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
+  position: relative;
 
   div{
     display: flex;
@@ -78,5 +80,16 @@
       padding: 0 3px;
     }
   }
+}
 
+.buttonsLeft{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.buttonsRight{
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }

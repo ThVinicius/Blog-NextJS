@@ -11,6 +11,7 @@ import {
 } from 'react-icons/fi'
 
 import Prismic from '@prismicio/client'
+import { usePosts } from 'hooks/usePosts'
 import { RichText } from 'prismic-dom'
 
 import { getPrismicClient } from '../../services/prismic'
@@ -26,10 +27,17 @@ type Post = {
 
 interface PostsProps {
   posts: Post[]
+  page: string
+  totalPage: string
 }
 
-export default function Posts({ posts: postsBlog }: PostsProps) {
-  const [posts] = useState(postsBlog || [])
+export default function Posts({
+  posts: postsBlog,
+  page,
+  totalPage
+}: PostsProps) {
+  const [currentPage, setCurrentPage] = useState(Number(page))
+  const { posts, navigatePage } = usePosts(postsBlog, setCurrentPage)
 
   return (
     <>
@@ -58,23 +66,27 @@ export default function Posts({ posts: postsBlog }: PostsProps) {
           ))}
 
           <div className={styles.buttonNavigate}>
-            <div>
-              <button>
-                <FiChevronsLeft size={25} color="#FFF" />
-              </button>
-              <button>
-                <FiChevronLeft size={25} color="#FFF" />
-              </button>
-            </div>
+            {Number(currentPage) >= 2 && (
+              <div className={styles.buttonsLeft}>
+                <button onClick={() => navigatePage(1)}>
+                  <FiChevronsLeft size={25} color="#FFF" />
+                </button>
+                <button onClick={() => navigatePage(Number(currentPage - 1))}>
+                  <FiChevronLeft size={25} color="#FFF" />
+                </button>
+              </div>
+            )}
 
-            <div>
-              <button>
-                <FiChevronRight size={25} color="#FFF" />
-              </button>
-              <button>
-                <FiChevronsRight size={25} color="#FFF" />
-              </button>
-            </div>
+            {Number(currentPage) < Number(totalPage) && (
+              <div className={styles.buttonsRight}>
+                <button onClick={() => navigatePage(Number(currentPage + 1))}>
+                  <FiChevronRight size={25} color="#FFF" />
+                </button>
+                <button onClick={() => navigatePage(Number(totalPage))}>
+                  <FiChevronsRight size={25} color="#FFF" />
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </main>
@@ -93,8 +105,6 @@ export const getStaticProps: GetStaticProps = async () => {
       pageSize: 3
     }
   )
-
-  // console.log(JSON.stringify(response, null, 2))
 
   const posts = response.results.map(post => {
     return {
@@ -117,7 +127,9 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      posts
+      posts,
+      page: response.page,
+      totalPage: response.total_pages
     },
     revalidate: 60 * 60
   }
