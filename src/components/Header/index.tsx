@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import logo from '../../../public/images/logo.svg'
+import logo from '../../../public/images/images-removebg-preview.png'
 import { ActiveLink } from '../ActiveLink'
 import styles from './styles.module.scss'
 
@@ -10,7 +10,7 @@ export function Header() {
       <div className={styles.headerContent}>
         <ActiveLink href="/" activeClassName={styles.active}>
           <span>
-            <Image src={logo} alt="Sujeito Programador Logo" />
+            <Image src={logo} alt="Sujeito Programador Logo" height={80} />
           </span>
         </ActiveLink>
 
@@ -27,14 +27,6 @@ export function Header() {
             <span>Quem somos?</span>
           </ActiveLink>
         </nav>
-
-        <a
-          className={styles.readyButton}
-          type="button"
-          href="https://sujeitoprogramador.com"
-        >
-          COMEÇAR
-        </a>
       </div>
     </header>
   )

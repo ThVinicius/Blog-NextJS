@@ -29,22 +29,16 @@ export default function Home({ content }: ContentProps) {
   return (
     <>
       <Head>
-        <title>Apaixonado por tecnologia - Sujeito Programador</title>
+        <title>Apaixonado por tecnologia - Th-Programador</title>
       </Head>
       <main className={styles.container}>
         <div className={styles.containerHeader}>
           <section className={styles.ctaText}>
             <h1>{content.title}</h1>
             <span>{content.titleContent}</span>
-            <a href={content.linkAction}>
-              <button>COMEÇAR AGORA!</button>
-            </a>
           </section>
 
-          <img
-            src="/images/banner-conteudos.png"
-            alt="Conteúdos Sujeito Programador"
-          />
+          <img src="/images/banner-da-web.jpg" alt="Conteúdos Th-Programador" />
         </div>
 
         <hr className={styles.divisor} />
@@ -78,15 +72,12 @@ export default function Home({ content }: ContentProps) {
         <div className={styles.nextLevelContent}>
           <Image quality={100} src={techsImage} alt="Tecnologias" />
           <h2>
-            Mais de <span className={styles.alunos}>15 mil</span> já levaram sua
-            carreira ao próximo nivel.
+            Muitos conteúdos de diferentes tecnologias para você praticar e
+            aprender
           </h2>
           <span>
             E você vai perder a chance de evoluir de uma vez por todas?
           </span>
-          <a href={content.linkAction}>
-            <button>ACESSAR TURMA!</button>
-          </a>
         </div>
       </main>
     </>
