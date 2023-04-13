@@ -38,7 +38,10 @@ export default function Home({ content }: ContentProps) {
             <span>{content.titleContent}</span>
           </section>
 
-          <img src="/images/banner-da-web.jpg" alt="Conteúdos Th-Programador" />
+          <Image
+            src="/images/banner-da-web.jpg"
+            alt="Conteúdos Th-Programador"
+          />
         </div>
 
         <hr className={styles.divisor} />
@@ -49,7 +52,7 @@ export default function Home({ content }: ContentProps) {
             <span>{content.mobileContent}</span>
           </section>
 
-          <img
+          <Image
             src={content.mobileBanner}
             alt="Conteúdos desenvolvimento de apps"
           />
@@ -58,7 +61,7 @@ export default function Home({ content }: ContentProps) {
         <hr className={styles.divisor} />
 
         <div className={styles.sectionContent}>
-          <img
+          <Image
             src={content.webBanner}
             alt="Conteúdos desenvolvimento de aplicacoes web"
           />

@@ -1,5 +1,6 @@
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
+import Image from 'next/image'
 import { FaLinkedin, FaGithub } from 'react-icons/fa'
 
 import Prismic from '@prismicio/client'
@@ -41,11 +42,11 @@ export default function Sobre({ content }: ContentProps) {
             </a>
           </section>
 
-          <img
+          <Image
             src={content.banner}
             alt="Sobre Th-Programador"
-            width="448px"
-            height="430.8px"
+            width={448}
+            height={430.8}
           />
         </div>
       </main>
